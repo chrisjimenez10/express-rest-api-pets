@@ -1,15 +1,16 @@
-
+//Import
 const express = require("express");
 const router = express.Router();
 const Pet = require("../models/pet.js");
 
 //Routes
+    // In routers, the designated starting poing to the URL path is prepended from whatever we assigned in the main server file - Here, it is implied that these router url paths start with "/pets" followed with whatever we type here 
 router.post("/", async (req, res)=>{
     try{
         const createdPet = await Pet.create(req.body)
-        res.status(201).json(createdPet);
+        res.status(201).json(createdPet); //The status() method sets the HTTP status code of the response (It is the status code that will display after a request completes its request-response cycle - Or, send an error status code if something went wrong)
     }catch(error){
-        res.status(500).json({error:error.message});
+        res.status(500).json({error:error.message}); // The json() method converts an object to a JSON string before sending the response, which results in sending a response in JSON format (JSON response)
     }
 
     // res.status(201).send("hi");

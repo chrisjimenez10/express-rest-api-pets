@@ -25,6 +25,6 @@ app.use("/pets", petRouter);
 // Routes go here
 
 //Server
-app.listen(3000, () => {
-  console.log('The express app is ready!');
+app.listen(process.env.PORT ? process.env.PORT : 3000, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
